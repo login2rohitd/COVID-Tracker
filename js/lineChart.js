@@ -2,6 +2,7 @@
 let dates;
 let daily_infected_count;
 
+/*
 async function getCountForChart() {
     const res123       = await fetch("https://api.covid19india.org/data.json");
     const responsedata = await res123.json();
@@ -14,13 +15,34 @@ async function getCountForChart() {
 
     loadChart();            //I have contained below chart js operation in loadchart() function becaues I want those chart operation to be done only after getting values in dates and daily count array.
 }
+*/
 
 
+////////////////////////////////
+async function getCountForChart1(selected_country_name) {
+    const res123       = await fetch(`https://api.covid19api.com/total/country/${selected_country_name}`);
+    const responsedata = await res123.json();
+
+    dates = responsedata.map(abc => abc.Date.substring(0,10));
+
+    total_confirmed = responsedata.map( abc => abc.Confirmed );               //Total cummulative data
+    daily_infected_count = responsedata.map( (abc,index) => abc.Confirmed - total_confirmed[index-1] );      //Daily_count = today - Yesterday.
+
+
+    loadChart();            //I have contained below chart js operation in loadchart() function becaues I want those chart operation to be done only after getting values in dates and daily count array.
+}
+/////////////////////////////
+
+
+var lineChart;
 function loadChart() {
 
     let myChart_abc = document.getElementById('myChart').getContext('2d');         //For canvas type of element, we need to provide getContext.
 
-    let lineChart = new Chart(myChart_abc, {           
+    //alert (lineChart);
+    if (lineChart) lineChart.destroy();          //We have to destroy previuos canvas on every call of this funtion.
+
+    lineChart = new Chart(myChart_abc, {           
         type: 'line',              //Type of chart: Bar, line, pie, horizontal bar, ...
 
         data: {
@@ -44,7 +66,7 @@ function loadChart() {
             layout: {
                 padding: {
                     left: 50,
-                    right: 0,
+                    right: 50,
                     bottom: 0,
                     top: 0
                 }
