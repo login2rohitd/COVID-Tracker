@@ -55,7 +55,7 @@ $(document).ready(function () {
     document.getElementById('recoveredcardlastupdated').innerHTML = new Date(responsedata.lastUpdate).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: '2-digit' });
     document.getElementById('deathscardlastupdated').innerHTML = new Date(responsedata.lastUpdate).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: '2-digit' });
 
-    //Vaccination data and chart are available only for India.
+    //Vaccination data is available only for India.
     if (selected_country_code == 'IN') {
       document.getElementById("vaccinated").hidden = false;
 
@@ -69,14 +69,20 @@ $(document).ready(function () {
       document.getElementById('vaccinatedcardvalue').innerHTML = (parseInt(total_doses_administstered).toLocaleString());
       document.getElementById('vaccinatedcardperc').innerHTML = parseFloat(total_doses_administstered / 1340631990 * 100).toFixed(2);     //Population is hard coded here.
       document.getElementById('vaccinatedcardlastupdated').innerHTML = new Date( updated_time.substring(6, 10)+'-'+updated_time.substring(3, 5)+'-'+updated_time.substring(0, 2) ).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: '2-digit' });
-
-      //For chart
-      document.getElementsByClassName('chartContainer')[0].hidden = false;
-      getCountForChart();        //This function is written in linechart.js
     }else {
       document.getElementById("vaccinated").hidden = true;
-      document.getElementsByClassName('chartContainer')[0].hidden = true;
     }
+
+    //For chart
+    if (selected_country_code == '') {
+      document.getElementsByClassName('chartContainer')[0].hidden = true;
+    }else{
+      document.getElementsByClassName('chartContainer')[0].hidden = false;
+
+      let selected_country_name = document.getElementById("countrySelect")[document.getElementById("countrySelect").selectedIndex].innerHTML;
+      getCountForChart1(selected_country_name);        //This function is written in linechart.js
+    }
+
 
     toCounterUpNumbers();          //To counter-up Number.
   }
