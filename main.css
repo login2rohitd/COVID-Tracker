@@ -1,0 +1,82 @@
+body {
+    background-color: #fafafa;
+    font-family: "Bookman Old Style";
+    font-size: 15px;
+}
+
+.container{
+    padding: 10px; 
+    margin-top: 15px;
+}
+
+.chartContainer{
+    padding: 10px; 
+    margin-top: 40px;
+    height: 150px;
+    width: 1000px;
+}
+
+.mycardsinfected {
+    padding: 10px;
+    border-left: 7px solid yellow;
+    width: 210px;
+    transition: 450ms;
+}
+
+.mycardsrecovered {
+    padding: 10px;
+    border-left: 7px solid greenyellow;
+    width: 210px;
+    transition: 450ms;
+}
+
+.mycardsdeaths {
+    padding: 10px;
+    border-left: 7px solid red;
+    width: 210px;
+    transition: 450ms;
+}
+
+.mycardsvaccinated {
+    padding: 10px;
+    border-left: 7px solid rgb(0, 255, 242);
+    width: 210px;
+    transition: 450ms;
+}
+
+.mycardsinfected:hover,
+.on_pageload_infected {
+    box-shadow: 0px 0px 10px yellow;
+    transform: scale(1.03);
+}
+
+.mycardsrecovered:hover,
+.on_pageload_recovered {
+    box-shadow: 0px 0px 10px greenyellow;
+    transform: scale(1.03);
+}
+
+.mycardsdeaths:hover,
+.on_pageload_deaths {
+    box-shadow: 0px 0px 10px red;
+    transform: scale(1.03);
+}
+
+.mycardsvaccinated:hover,
+.on_pageload_vaccinated {
+    box-shadow: 0px 0px 10px rgb(0, 255, 242);
+    transform: scale(1.03);
+}
+
+select {
+--select-border: #777;
+border: 1px solid var(--select-border);
+border-radius: 0.25em;
+padding: 0.25em 0.5em;
+font-size: 0.9rem;
+font-family: "Bookman Old Style";
+cursor: pointer;
+background-color: #fff;
+}
+
+

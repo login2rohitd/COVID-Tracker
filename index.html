@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="./main.css">
+  <script src="js/main.js"></script> 
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>   <!-- CDN For Counter-Up Number -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>        <!-- CDN For Counter-Up Number -->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js"></script> <!-- CDN for Chart.js -->
+  <script src="js/lineChart.js"></script>    <!-- My js for chart -->
+
+  <title>COVID-19 Cases</title>
+
+  <script type="text/javascript">
+
+    
+  </script>
+</head>
+
+<body onload="javascript:getCountries()">
+
+  <table align='center'>
+    <tr>
+      <td>
+        <img style="width: 370px; margin-top: 5px;" src="gif/img123.png" alt="COVID-19">
+      </td>
+    </tr>
+  </table>
+
+  <table align='center' style=" padding: 12px; margin-top: 30px;">
+    <tr>
+      <td>
+        <div>
+          <select id='countrySelect' onchange="javascript:getCount()">
+            <option value=''>Global</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <table align='center'>
+    <tr>
+      <td>
+        <table align='center' class="container">
+          <tr style="background-color: #fff; ">
+            <td class="mycardsinfected">
+              <div>
+                <div>
+                  <p>Total Infected</p>
+                  <h2><span id='infectedcardvalue'>1</span></h2>
+                  <p><span id='infectedcardperc'>-</span><span></span></p>
+                  <p>Last Updated - <span id='infectedcardlastupdated'>-</span></p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+
+      <td>
+        <table align='center' class="container">
+          <tr style="background-color: #fff; ">
+            <td class="mycardsrecovered">
+              <div>
+                <div>
+                  <p>Recovered</p>
+                  <h2><span id='recoveredcardvalue'>1</span></h2>
+                  <p><span id='recoveredcardperc'>&nbsp;</span><span>%</span></p>
+                  <p>Last Updated - <span id='recoveredcardlastupdated'>-</span></p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+
+      <td>
+        <table align='center' class="container">
+          <tr style="background-color: #fff; ">
+            <td class="mycardsdeaths">
+              <div>
+                <div>
+                  <p>Deaths</p>
+                  <h2><span id='deathscardvalue'>1</span></h2>
+                  <p><span id='deathscardperc'>&nbsp;</span><span>%</span></p>
+                  <p>Last Updated - <span id='deathscardlastupdated'>-</span></p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+
+      <td id='vaccinated'>
+        <table align='center' class="container">
+          <tr style="background-color: #fff; ">
+            <td class="mycardsvaccinated">
+              <div>
+                <div>
+                  <p>Total Vaccinated</p>
+                  <h2><span id='vaccinatedcardvalue'>1</span></h2>
+                  <p><span id='vaccinatedcardperc'>&nbsp;</span><span>% of Total Population.</span></p>
+                  <p>Last Updated - <span id='vaccinatedcardlastupdated'>-</span></p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+
+    </tr>
+  </table>
+
+  <table align='center' class='chartContainer'>
+    <tr>
+      <td>
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+</body>
+
+</html>
